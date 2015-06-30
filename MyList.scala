@@ -10,7 +10,7 @@ class MyList[T](elements:T*){
     }
   }
 
-  def get(n:Int) : T = {
+  def apply(n:Int) : T = {
     var node = head
     for( i <- 1 to n){
       node = node.next
@@ -24,6 +24,6 @@ class Node[T](val data:T, val next:Node[T]){
 
 object Main extends App{
   val list = new MyList("42","43","44","45","100")
-  println(list get(2))
+  println(list(2))
   println(list length)
 }
