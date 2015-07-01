@@ -19,14 +19,14 @@ class MyList[T](elements:T*){
   }
 
   override def toString() : String = {
-    var node = head
-    var str = "["
-    while( node.next != null ){
-      str += node.data.toString() + ", "
-      node = node.next
+    def buildString(node:Node[T]) : String = {
+      if(node.next == null){
+        node.data.toString
+      }else{
+        node.data.toString + ", " + buildString(node.next)
+      }
     }
-    str += node.data.toString() + ']'
-    return str
+    '['+buildString(head)+']'
   }
 }
 
