@@ -1,4 +1,4 @@
-class Node[T](val data:T, val next:Node[T])
+case class Node[+T](data:T, next:Node[T])
 
 class MyList[T](elements:T*){
   val head = cons(0)
@@ -6,9 +6,9 @@ class MyList[T](elements:T*){
 
   private def cons(n:Int) : Node[T] = {
     if(elements isDefinedAt(n+1)){
-      new Node( elements(n), cons(n+1))
+      Node( elements(n), cons(n+1))
     }else{
-      new Node( elements(n),null)
+      Node( elements(n),null)
     }
   }
 
@@ -33,7 +33,7 @@ class MyList[T](elements:T*){
 }
 
 object Main extends App{
-  val list = new MyList[Int](42,43,44,45,56,120)
+  val list = new MyList(42,43,44,45,56,120)
   println(list)
   println(list(2))
   println(list length)
