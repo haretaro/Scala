@@ -1,3 +1,5 @@
+class Node[T](val data:T, val next:Node[T])
+
 class MyList[T](elements:T*){
   val head = cons(0)
   val length = elements length
@@ -29,8 +31,6 @@ class MyList[T](elements:T*){
     '['+buildString(head)+']'
   }
 }
-
-class Node[T](val data:T, val next:Node[T])
 
 object Main extends App{
   val list = new MyList[Int](42,43,44,45,56,120)
