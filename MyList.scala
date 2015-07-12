@@ -1,4 +1,4 @@
-case class Node[+T](data:T, next:Node[T])
+case class Node[+T](head:T, tail:Node[T])
 
 class MyList[T](elements:T*){
   val head = cons(0)
@@ -15,17 +15,17 @@ class MyList[T](elements:T*){
   def apply(n:Int) : T = {
     var node = head
     for( i <- 1 to n){
-      node = node next
+      node = node tail
     }
-    node.data
+    node.head
   }
 
   override def toString() : String = {
     def buildString(node:Node[T]) : String = {
-      if(node.next == null){
-        node.data.toString
+      if(node.tail == null){
+        node.head.toString
       }else{
-        node.data.toString + ", " + buildString(node.next)
+        node.head.toString + ", " + buildString(node.tail)
       }
     }
     '['+buildString(head)+']'
