@@ -1,6 +1,8 @@
-case class Node[+T](head:T, tail:Node[T])
+case class Node[T](head:T, tail:Node[T])
 
-class MyList[T](elements:T*){
+object Nil(Nothing,Nil) extends Node[Nothing];
+
+class MyList[+T](elements:T*){
   val head = cons(0)
   val length = elements length
 
@@ -8,7 +10,7 @@ class MyList[T](elements:T*){
     if(elements isDefinedAt(n+1)){
       Node( elements(n), cons(n+1))
     }else{
-      Node( elements(n),null)
+      Node( elements(n),Nil)
     }
   }
 
@@ -22,7 +24,7 @@ class MyList[T](elements:T*){
 
   override def toString() : String = {
     def buildString(node:Node[T]) : String = {
-      if(node.tail == null){
+      if(node.tail == Nil){
         node.head.toString
       }else{
         node.head.toString + ", " + buildString(node.tail)
